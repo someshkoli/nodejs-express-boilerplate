@@ -1,16 +1,11 @@
-require('dotenv').config();
 const express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     logger = require('morgan'),
-    authRoutes = require('./routes/authRoutes'),
-    userRoutes = require('./routes/userRoutes'),
-    ticketRoutes = require('./routes/ticketRoutes'),
-    eventRoutes = require('./routes/eventRoutes'),
-    volunteerRoutes = require('./routes/volunteerRoutes');
+    routes = require('./routes/routes');
 
 const app = express();
-// const doit = require('./seed');
+
 //=======================
 // MIDDLEWARE
 //=======================
@@ -25,16 +20,15 @@ app.use(logger('dev'));
 
 let mongo_uri;
 
-if (process.env.LOCALDEV === 'true') {
-    // mongo_uri = 'mongodb://localhost/perfest';
-} else {
-    mongo_uri = process.env.DATABASE_URL;
-}
+// for local development
+mongo_uri = 'mongodb://localhost/localdb';
+// for production
+// mongo_uri = process.env.DATABASE_URL;
 
-mongoose.connect(mongo_uri, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
+mongoose.connect(mongo_uri, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true })
     .then(() => console.log("Database connected"))
     .catch(console.log);
-// doit();
+
 //=======================
 // ALLOW-CORS
 //=======================
@@ -50,6 +44,7 @@ app.use(function (req, res, next) {
 // ROUTES
 //=======================
 
+app.use("/routes/", routes);
 
 //=======================
 // STARTING THE SERVER
@@ -59,7 +54,7 @@ app.get('/', (req, res) => {
     res.send('Works')
 });
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log('App listening on port ' + port);
 });

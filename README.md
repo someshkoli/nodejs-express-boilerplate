@@ -13,7 +13,7 @@
 
 #### Libraries used:
 -  [NodeJs](https://nodejs.org)
--  [Express](https://expressjs.com/), [npm](https://www.npmjs.com/package/express)
+-  [Express](https://expressjs.com/), [docs](https://www.npmjs.com/package/express)
 -  [MongoDb](https://www.mongodb.com/) 
--  [Mongoose](https://mongoosejs.com/), [npm](https://www.npmjs.com/package/mongoose)
--  [Morgan](https://github.com/expressjs/morgan), [npm](https://www.npmjs.com/package/morgan)
+-  [Mongoose](https://mongoosejs.com/), [docs](https://www.npmjs.com/package/mongoose)
+-  [Morgan](https://github.com/expressjs/morgan), [docs](https://www.npmjs.com/package/morgan)

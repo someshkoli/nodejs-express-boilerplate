@@ -1,5 +1,5 @@
 const express = require('express'),
-    bodyParser = require('body-parser'),
+    
     mongoose = require('mongoose'),
     logger = require('morgan'),
     routes = require('./routes/routes');
@@ -10,8 +10,8 @@ const app = express();
 // MIDDLEWARE
 //=======================
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(logger('dev'));
 
 //=======================
